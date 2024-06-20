@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspiring Quotes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quote-container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .quote-text {
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .quote-author {
+            font-size: 18px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div class="quote-text" id="quoteText">Loading...</div>
+        <div class="quote-author" id="quoteAuthor"></div>
+        
+        <button class="btn" onclick="shareQuote()">Share Quote</button>
+        <button class="btn" onclick="saveFavorite()">Save Favorite</button>
+    </div>
+    
+    <script>
+        // Array of quotes (replace with your own quotes)
+        const quotes = [
+            { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+            { text: "The best way to predict the future is to create it.", author: "Abraham Lincoln" },
+            { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+            { text: "The only limit to our realization of tomorrow will be our doubts of today.", author: "Franklin D. Roosevelt" },
+            { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" }
+            // Add more quotes as needed
+        ];
+
+        // Function to get a random quote
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        // Function to display a random quote
+        function displayRandomQuote() {
+            const randomQuote = getRandomQuote();
+            document.getElementById('quoteText').textContent = randomQuote.text;
+            document.getElementById('quoteAuthor').textContent = `- ${randomQuote.author}`;
+        }
+
+        // Display initial quote on page load
+        window.onload = displayRandomQuote;
+
+        // Function to share quote (dummy function for demo)
+        function shareQuote() {
+            const quoteText = document.getElementById('quoteText').textContent;
+            const quoteAuthor = document.getElementById('quoteAuthor').textContent;
+            const shareText = `${quoteText} - ${quoteAuthor}`;
+            alert(`Share this quote: ${shareText}`);
+            // Actual implementation would involve sharing via social media or messaging API
+        }
+
+        // Function to save favorite quote (dummy function for demo)
+        function saveFavorite() {
+            const quoteText = document.getElementById('quoteText').textContent;
+            const quoteAuthor = document.getElementById('quoteAuthor').textContent;
+            alert(`Saved favorite quote: ${quoteText} - ${quoteAuthor}`);
+            // Actual implementation would involve saving to local storage or backend database
+        }
+    </script>
+</body>
+</html>
